@@ -5,14 +5,18 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-const question = (questionText: string) =>
-  new Promise<string>((resolve) => rl.question(questionText, resolve)).finally(
-    () => rl.close()
-  );
+async function question(questionText: string) {
+  return new Promise<string>((resolve) => rl.question(questionText, resolve));
+}
 
-const questionFloat = (questionText: string) =>
-  new Promise<string>((resolve) => rl.question(questionText, resolve))
-    .then((value) => parseFloat(value ?? ""))
-    .finally(() => rl.close());
+async function questionFloat(questionText: string) {
+  return new Promise<string>((resolve) =>
+    rl.question(questionText, resolve)
+  ).then((value) => parseFloat(value ?? ""));
+}
 
-export { question, questionFloat };
+function closeReadLine() {
+  rl.close();
+}
+
+export { question, questionFloat, closeReadLine };

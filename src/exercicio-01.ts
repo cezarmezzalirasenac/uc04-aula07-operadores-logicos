@@ -1,7 +1,7 @@
 // 1 - Escreva um programa que receba um número
 // e diga se ele está no intervalo entre 100 e 200.
 
-import { questionFloat } from "./question";
+import { questionFloat, closeReadLine } from "./question";
 
 // ENTRADA
 
@@ -30,4 +30,4 @@ async function main() {
   }
 }
 
-main();
+main().finally(() => closeReadLine());
