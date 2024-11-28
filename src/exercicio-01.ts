@@ -1,12 +1,13 @@
 // 1 - Escreva um programa que receba um número
 // e diga se ele está no intervalo entre 100 e 200.
 
-import { questionFloat, closeReadLine } from "./question";
+import Scanner from "./scanner";
 
 // ENTRADA
 
 async function main() {
-  const numero = await questionFloat("Informe um número: ");
+  const scanner = new Scanner();
+  const numero = await scanner.questionFloat("Informe um número: ");
 
   let estaNoIntervalo = false;
 
@@ -28,6 +29,8 @@ async function main() {
   } else {
     console.log(numero + " não está no intervalo entre 100 e 200");
   }
+
+  scanner.close();
 }
 
-main().finally(() => closeReadLine());
+main();
