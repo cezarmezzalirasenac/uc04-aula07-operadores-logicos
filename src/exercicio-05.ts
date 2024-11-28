@@ -1,11 +1,10 @@
 import * as readline from "readline";
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 const makeQuestion = (question: string): string => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
   let textEntered = "";
   rl.question(question, (text: string) => {
     textEntered = text ?? "";
@@ -26,4 +25,4 @@ do {
   tentativas++;
 } while (tentativas < 3 && !senhaValida);
 
-console.log("teste")
+console.log("teste");
